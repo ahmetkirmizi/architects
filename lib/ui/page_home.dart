@@ -12,6 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,117 +20,128 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         child: SafeArea(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              HeaderWidget(),
-              Divider(
-                color: whiteTextColorOp,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 23.0, top: 30.0),
-                child: Text(
-                  "Dark \nInterior",
-                  style: TextStyle(
-                    fontFamily: 'Regular',
-                    color: whiteTextColor,
-                    fontSize: 60.0,
-                    fontWeight: FontWeight.normal,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                HeaderWidget(),
+                Div(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 23.0, top: 30.0),
+                  child: Text(
+                    "Dark \nInterior",
+                    style: TextStyle(
+          fontFamily: 'Regular',
+          color: whiteTextColor,
+          fontSize: 60.0,
+          fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 23.0),
+                  child: Container(
+                    width: double.infinity,
+                    child: Stack(
+          fit: StackFit.passthrough,
+          children: <Widget>[
+            
+            Positioned(
+              top: 0.2,
+              right: 5.0,
+              child: Container(
+                child: BorderedText(
+                  strokeColor: whiteTextColorOp,
+                  strokeWidth: 2,
+                  child: Text(
+                    "02",
+                    style: TextStyle(
+                        decoration: TextDecoration.none,
+                        fontSize: 150,
+                        decorationColor: primaryColor,
+                        color: primaryColor,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 23.0),
-                child: Container(
-                  width: double.infinity,
-                  child: Stack(
-                    fit: StackFit.passthrough,
-                    children: <Widget>[
-                      
-                      Positioned(
-                        top: 0.2,
-                        right: 5.0,
-                        child: Container(
-                          child: BorderedText(
-                            strokeColor: whiteTextColorOp,
-                            strokeWidth: 2,
-                            child: Text(
-                              "02",
-                              style: TextStyle(
-                                  decoration: TextDecoration.none,
-                                  fontSize: 150,
-                                  decorationColor: primaryColor,
-                                  color: primaryColor,
-                                  fontWeight: FontWeight.bold),
+            ),
+            Positioned(
+              child: Container(
+                  padding: EdgeInsets.only(right: 2.0, top: 140.0),
+                  height: MediaQuery.of(context).size.height / 2,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 5,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          
+                          width:
+                              MediaQuery.of(context).size.width * 0.5,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DetailPage(
+                                          imageName:
+                                              'assets/images/$index.jpeg')));
+                            },
+                            child: Container(
+                              color: primaryColor,
+                              child: Image.asset(
+                                  'assets/images/$index.jpeg',
+                                  fit: BoxFit.fitHeight),
                             ),
                           ),
-                        ),
-                      ),
-                      Positioned(
-                        child: Container(
-                            padding: EdgeInsets.only(right: 2.0, top: 140.0),
-                            height: MediaQuery.of(context).size.height / 2,
-                            child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: 5,
-                                itemBuilder: (context, index) {
-                                  return Container(
-                                    
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.5,
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => DetailPage(
-                                                    imageName:
-                                                        'assets/images/$index.jpeg')));
-                                      },
-                                      child: Container(
-                                        color: primaryColor,
-                                        child: Image.asset(
-                                            'assets/images/$index.jpeg',
-                                            fit: BoxFit.fitHeight),
-                                      ),
-                                    ),
-                                  );
-                                })),
-                      ),
-                      Positioned(
-                        top: 30,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Container(
-                                width: 25,
-                                child: Divider(
-                                  color: secondaryColor,
-                                  thickness: 2.0,
-                                )),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 8.0),
-                              child: Container(
-                                  child: Text(
-                                "Learn more",
-                                style: TextStyle(
-                                    color: secondaryColor,
-                                    letterSpacing: 2.0,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500),
-                              )),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
+                        );
+                      })),
+            ),
+            Positioned(
+              top: 30,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                      width: 25,
+                      child: Divider(
+                        color: secondaryColor,
+                        thickness: 2.0,
+                      )),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Container(
+                        child: Text(
+                      "Learn more",
+                      style: TextStyle(
+                          color: secondaryColor,
+                          letterSpacing: 2.0,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500),
+                    )),
+                  )
+                ],
+              ),
+            ),
+          ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
         ),
       ),
+    );
+  }
+}
+
+class Div extends StatelessWidget {
+  const Div({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Divider(
+      color: whiteTextColorOp,
     );
   }
 }

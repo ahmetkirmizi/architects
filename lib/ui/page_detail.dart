@@ -6,7 +6,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 
 class DetailPage extends StatelessWidget {
   final String imageName;
-  const DetailPage({Key key, this.imageName}) : super(key: key);
+  const DetailPage({Key key,@required this.imageName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,27 +40,8 @@ class DetailPage extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 30.0, right: 20.0, top: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  DescriptionItem(title: designerTitle, description: designer),
-                  DescriptionItem(title: yearTitle, description: year)
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  DescriptionItem(title: colorTitle, description: color),
-                  DescriptionItem(title: companyTitle, description: company)
-                ],
-              ),
-            ),
+            Row1(),
+            Row2(),
             Padding(
               padding: const EdgeInsets.only(left: 30.0),
               child: Icon(Entypo.dots_three_horizontal, color: secondaryColor),
@@ -70,12 +51,53 @@ class DetailPage extends StatelessWidget {
               child: Center(
                 child: Container(
                   width: MediaQuery.of(context).size.width - 60.0,
-                  child: CustomBorderButtonWidget(buttonColor: primaryColor,borderColor: secondaryColor,textColor: secondaryColor,),
+                  child: CustomBorderButtonWidget(buttonColor: primaryColor,borderColor: secondaryColor,textColor: secondaryColor,text:"Pre Order"),
                 ),
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class Row2 extends StatelessWidget {
+  const Row2({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(30.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          DescriptionItem(title: colorTitle, description: color),
+          DescriptionItem(title: companyTitle, description: company)
+        ],
+      ),
+    );
+  }
+}
+
+class Row1 extends StatelessWidget {
+  const Row1({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding:
+          const EdgeInsets.only(left: 30.0, right: 20.0, top: 20.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          DescriptionItem(title: designerTitle, description: designer),
+          DescriptionItem(title: yearTitle, description: year)
+        ],
       ),
     );
   }

@@ -4,8 +4,9 @@ class CustomBorderButtonWidget extends StatelessWidget {
   final borderColor;
   final textColor;
   final buttonColor;
+  final text;
   const CustomBorderButtonWidget({
-    Key key,@required this.borderColor,@required this.textColor,@required this.buttonColor,
+    Key key,@required this.borderColor,@required this.textColor,@required this.buttonColor, this.text,
   }) : super(key: key);
 
   @override
@@ -20,7 +21,7 @@ class CustomBorderButtonWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top:15.0,bottom: 15.0),
         child: Text(
-          "Pre Order",
+          text,
           style: TextStyle(
             color: textColor,
             fontSize: 14.0,
